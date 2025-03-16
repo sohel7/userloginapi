@@ -1,0 +1,90 @@
+
+status: 28 minute completed 
+url: https://www.youtube.com/watch?v=WfCJ3sHnLBM&list=PLtYTVIzWW8XEGCo-sAot0hgZH9Z9OSWvR
+=========================Activity plan =============================
+create a api where table will be
+1 User table
+2 deposit table
+3 report to see all deposit as summary and details
+
+4 flutter app will be
+ * User Registration form
+ * User Login Form
+ * Deposit Form
+ * Total Deposit Form Summary and Details
+
+
+=============Activity process==================
+1 Create afolder and run 
+$ npm init -y  -->  to install package.json
+2 change the index.js to app.js in packaje .json file
+3 create a file app.js 
+4 npm install express --> to get the node module folder
+5 test to run server : 
+in app.js code:
+--------------------------
+const express = require("express");
+const app = express();
+
+
+app.get("/api", (req, res) => {
+    res.json({
+        success: 1,
+        message: "This is API working"
+    });
+});
+
+app.listen(3000, () => {
+    console.log("Server up and running");
+});
+-----------------------------------------
+
+5 Create a database connection with mysql
+ * create a folder named config
+ * Create a filde named database.js
+ * in the terminal install mysql
+  npm install mysql  --> this package will help connection with mysql database to run queries
+ * npm install dotenv --> to hide all information in .env file
+ * npm install --save-dev nodemon    ---> to run npm automatically 
+ * go to package.json ---> script --> add this code like:
+  "scripts": {
+   "start": "nodemon app.js"
+  },
+* save and run as cammand: npm start
+
+* protect the .env file create a file named .gitignore and add this name  
+  .env,
+  node_modules
+
+* create a folder as api --> in this folder add modules like suers , product, deposit, now only users
+* create three files in users folder
+    user.routers.js
+    user.controller.js
+    user.service.js
+
+
+
+* first start for service file: 
+
+6 create database and table
+==========================
+CREATE DATABASE group20db;
+
+CREATE TABLE registration (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    firstName VARCHAR(50) NOT NULL,
+    lastName VARCHAR(50) NOT NULL,
+    gender ENUM('Male', 'Female', 'Other') NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    phone VARCHAR(20) UNIQUE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO registration (firstName, lastName, gender, email, password, phone)
+VALUES ('John', 'Doe', 'Male', 'john.doe@example.com', 'hashed_password_here', '1234567890');
+
+
+
+DROP TABLE IF EXISTS registration;
+
