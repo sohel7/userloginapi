@@ -1,5 +1,5 @@
 
-status: 28 minute completed 
+status: 51 minute completed 
 url: https://www.youtube.com/watch?v=WfCJ3sHnLBM&list=PLtYTVIzWW8XEGCo-sAot0hgZH9Z9OSWvR
 =========================Activity plan =============================
 create a api where table will be
@@ -12,7 +12,9 @@ create a api where table will be
  * User Login Form
  * Deposit Form
  * Total Deposit Form Summary and Details
-
+5 Create a database connection with mysql
+6 create database and table
+7 test api in local server
 
 =============Activity process==================
 1 Create afolder and run 
@@ -55,12 +57,15 @@ app.listen(3000, () => {
 * protect the .env file create a file named .gitignore and add this name  
   .env,
   node_modules
+* to encript the password use package bcrypt as --> npm install bcrypt
 
 * create a folder as api --> in this folder add modules like suers , product, deposit, now only users
 * create three files in users folder
     user.routers.js
     user.controller.js
     user.service.js
+
+* to get web token install :   npm install jsonwebtoken
 
 
 
@@ -88,3 +93,46 @@ VALUES ('John', 'Doe', 'Male', 'john.doe@example.com', 'hashed_password_here', '
 
 DROP TABLE IF EXISTS registration;
 
+7 test api in local server
+============================
+insert 
+----------
+post 
+http://localhost:3000/api/users/
+{
+"first_name": "mahim",
+"last_name": "hossain",
+"gender": "Male",
+"email": "mahim123@gmail.com",
+"phone": 19126524765,
+"password":"12345"
+}
+
+see users
+------------
+get
+http://localhost:3000/api/users/
+
+see user by Id
+-------------
+get
+http://localhost:3000/api/users/7
+
+update User
+----------------
+patch
+http://localhost:3000/api/users/
+      {
+            "id": 8,
+            "first_name": "Mahim",
+            "last_name": "Hossain",
+            "gender": "Male",
+            "email": "rakpieb1@gmail.com",
+            "phone": "19013265465",
+            "password": "12345"
+        }
+
+delete user
+-------------------
+delete
+http://localhost:3000/api/users/7
